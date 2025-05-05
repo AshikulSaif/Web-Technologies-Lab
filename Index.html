@@ -1,57 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WEB Tech Project</title>
     <style>
-        .custom-textbox {
-          width: 350px;
-          height: 40px;
+        .login-box {
+            background-color: lightgray;
+            padding: 30px;
+            width: 400px;
+            margin: 50px auto;
+            border-radius: 10px;
         }
+
+        .login-box input {
+            width: 100%;
+            height: 35px;
+            margin: 10px 0;
+        }
+
+        .custom-textbox {
+            width: 350px;
+            height: 40px;
+        }
+
         .error {
             color: red;
             font-size: 14px;
         }
-      </style>
-</head>
-<body style="place-items: center;">
-    
-    <div style="justify-content: center">
-        <img style="height: 80px; width: 80px;" src="AI_G_LOGO.jpg" />
-    </div>
-    <h1>TTTLE : Undecided</h1>
-        <div style="display: flex;">
-            <div style="display: flex; flex-direction: column">
 
-                <div style="background-color:aqua;height:auto;width:500px;">
-                    <div style="padding: 20px;">
-                        <h2>Get Registered</h2>
-                        <form onsubmit="return validate()">
-                            <label for="fname">Username:</label><br>
-                        <input type="text" size="50" id="fname" name="fname" placeholder="Enter name" required/><br>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        caption {
+            caption-side: top;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body style="place-items: center;">
+
+    <div style="justify-content: center">
+        <img style="height: 180px; width: 180px;" src="AI_G_LOGO.jpg" />
+    </div>
+    <h1>TITLE : AQI</h1>
+    <div style="display: flex;">
+        <div style="display: flex; flex-direction: column">
+
+            <div style="background-color:aqua;height:auto;width:500px;">
+                <div style="padding: 20px;">
+                    <h2>Get Registered</h2>
+                    <form action="register.php" method="POST" onsubmit="return validate()">
+
+                        <label for="fname">Full Name:</label><br>
+                        <input type="text" size="50" id="fname" name="fname" placeholder="Enter name" required /><br>
                         <p id="username-error" class="error"></p>
                         <label for="email">E-mail:</label><br>
-                        <input type="email" size="50" id="email" name="email" placeholder="xyz@gmail.com" ><br>
+                        <input type="email" size="50" id="email" name="email" placeholder="xyz@gmail.com" required><br>
                         <p id="email-error" class="error"></p>
                         <p>Select Your Gender:</p>
-                        <input type="radio" id="male" name="gender" value="male">
+                        <input type="radio" id="male" name="gender" value="male" required>
                         <label for="male">Male</label><br>
                         <input type="radio" id="female" name="gender" value="female">
                         <label for="female">Female</label><br>
                         <p></p>
                         <label for="password">Create Password:</label><br>
-                        <input type="password" size="50" id="password" name="password" placeholder="password" required><br>
-                        <p></p>
-                        <label for="confirm-password">Confirm Password:</label><br>
-                        <input type="password" size="50" id="confirm-password" name="confirm-password" placeholder="password" required><br>
+                        <input type="password" size="50" id="password" name="password" placeholder="password"
+                            required><br>
                         <p id="password-error" class="error"></p>
                         <p></p>
+                        <label for="confirm-password">Confirm Password:</label><br>
+                        <input type="password" size="50" id="confirm-password" name="confirm-password"
+                            placeholder="password" required><br>
+                        <p id="cpassword-error" class="error"></p>
+                        <p></p>
                         <label for="birthday">Date Of Birth:</label><br>
-                        <input type="date" id="birthday" name="birthday"><br>
+                        <input type="date" id="birthday" name="birthday" width="50" required><br>
                         <p></p>
                         <label for="country">Country</label>
-                        <select id="country" name="country">
+                        <select id="country" name="country" required>
                             <option value="australia">Australia</option>
                             <option value="canada">Canada</option>
                             <option value="usa">USA</option>
@@ -64,84 +113,91 @@
                         <label for="terms"> I accept the Terms & Conditions.</label><br>
                         <p></p>
                         <input type="submit" value="Submit">
-                        </form>
+                    </form>
 
-                        <script>
-
-function validate() {
-                        let username = document.getElementById('fname').value;
-                        let email = document.getElementById('email').value;
-                        let password = document.getElementById('password').value;
-                        let confirmPassword = document.getElementById('confirm-password').value;
-
-                        let usernameError = document.getElementById('username-error');
-                        let emailError = document.getElementById('email-error');
-                        let passwordError = document.getElementById('password-error');
-
-                        let valid = true;
-
-                        // Reset error messages
-                        usernameError.innerHTML = "";
-                        emailError.innerHTML = "";
-                        passwordError.innerHTML = "";
-
-                        // Username validation
-                        if (/\d/.test(username)) {
-                            usernameError.innerHTML = "Username should not contain numbers!";
-                            valid = false;
-                        }
-
-                        // Email validation using REGEX
-                        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailPattern.test(email)) {
-                            emailError.innerHTML = "Enter a valid email address!";
-                            valid = false;
-                        }
-
-                        // Check if passwords match
-                        if (password !== confirmPassword) {
-                            passwordError.innerHTML = "Passwords do not match!";
-                            valid = false;
-                        }
-
-                        return valid;
-                    }
-
-                            // function validate() {
-                            //     let username = document.getElementById('fname').value;
-                            //     let password = document.getElementById('password').value;
-                            //     let confirmPassword = document.getElementById('confirm-password').value;
-                            //     let errorMessage = document.getElementById('data');
-    
-                            //     // Check if username contains numbers
-                            //     if (/\d/.test(username)) {
-                            //         errorMessage.innerHTML = "Username should not contain numbers!";
-                            //         return false;
-                            //     } else {
-                            //         errorMessage.innerHTML = "";
-                            //     }
-    
-                            //     // Check if passwords match
-                            //     if (password !== confirmPassword) {
-                            //         errorMessage.innerHTML ="Passwords do not match!";
-                            //         return false;
-                            //     } else {
-                            //         errorMessage.innerHTML = "";
-                            //     }
-    
-                            //     return true;
-                            // }
-                        </script>
-
-                    </div>
-                </div>
-                <div style="background-color:burlywood;height:650px;width:500px;">
+                    <script src="script.js"></script>
                 </div>
             </div>
-            <div style="background-color:blue;height:1300px;width:500px;"></div>
+            <div style="background-color:rgb(135, 222, 136);height:650px;width:500px;">
+                <div class="login-box">
+                    <h2>Login</h2>
+                    <form onsubmit="return loginValidate()">
+                        <label for="login-email">Email:</label><br>
+                        <input type="email" id="login-email" name="login-email" placeholder="xyz@gmail.com"
+                            required><br>
+                        <p id="login-email-error" class="error"></p>
+
+                        <label for="login-password">Password:</label><br>
+                        <input type="password" id="login-password" name="login-password" placeholder="Enter password"
+                            required><br>
+                        <p id="login-password-error" class="error"></p>
+
+                        <input type="submit" value="Login">
+                    </form>
+                    <script src="script.js"></script>
+                </div>
             </div>
-        <!-- <script src="script.js"></script> -->
-        <!-- press ctrl + / to comment out -->
-        
+        </div>
+        <div style="background-color:blue;height:1300px;width:500px;">
+            <form>
+                <table>
+                    <thead>
+                        <tr>
+                            <p></p>
+                            <th>City</th>
+                            <th>Air Pressure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dhaka</td>
+                            <td>1012</td>
+                        </tr>
+                        <tr>
+                            <td>Chattogram</td>
+                            <td>1010</td>
+                        </tr>
+                        <tr>
+                            <td>Khulna</td>
+                            <td>1008</td>
+                        </tr>
+                        <tr>
+                            <td>Rajshahi</td>
+                            <td>1011</td>
+                        </tr>
+                        <tr>
+                            <td>Barishal</td>
+                            <td>1013</td>
+                        </tr>
+                        <tr>
+                            <td>Sylhet</td>
+                            <td>1009</td>
+                        </tr>
+                        <tr>
+                            <td>Rangpur</td>
+                            <td>1014</td>
+                        </tr>
+                        <tr>
+                            <td>Mymensingh</td>
+                            <td>1010</td>
+                        </tr>
+                        <tr>
+                            <td>Comilla</td>
+                            <td>1012</td>
+                        </tr>
+                        <tr>
+                            <td>Narayanganj</td>
+                            <td>1011</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <!-- press ctrl + / to comment out -->
+
 </body>
+
 </html>
