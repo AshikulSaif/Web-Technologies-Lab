@@ -30,6 +30,22 @@
             font-size: 14px;
         }
 
+        .titlestyle{
+            justify-content: center;
+            color:rgb(172, 234, 14);
+        }
+        .custom_button{
+            justify-content: center;
+            width: 380px;
+            height: 40px;
+            font-size: large;
+            color: rgb(5, 5, 252);
+        }
+        .dropbox {
+            font-size: large;
+            width: 220px;
+            height: 40px;
+        }
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
@@ -43,7 +59,7 @@
 
         th,
         td {
-            border: 1px solid #ccc;
+            border: 1px solid #cccccc;
             padding: 12px;
             text-align: center;
         }
@@ -51,7 +67,6 @@
         th {
             background-color: #f2f2f2;
         }
-
         caption {
             caption-side: top;
             font-size: 1.5em;
@@ -65,14 +80,14 @@
     <div style="justify-content: center">
         <img style="height: 180px; width: 180px;" src="AI_G_LOGO.jpg" />
     </div>
-    <h1>TITLE : AQI</h1>
+    <h1 class="titlestyle">TITLE : AIR QUALITY INDEX(AQI)</h1>
     <div style="display: flex;">
         <div style="display: flex; flex-direction: column">
 
             <div style="background-color:aqua;height:auto;width:500px;">
                 <div style="padding: 20px;">
                     <h2>Get Registered</h2>
-                    <form action="register.php" method="POST" onsubmit="return validate()">
+                    <form action="process.php" method="POST" onsubmit="return validate()">
 
                         <label for="fname">Full Name:</label><br>
                         <input type="text" size="50" id="fname" name="fname" placeholder="Enter name" required /><br>
@@ -97,10 +112,10 @@
                         <p id="cpassword-error" class="error"></p>
                         <p></p>
                         <label for="birthday">Date Of Birth:</label><br>
-                        <input type="date" id="birthday" name="birthday" width="50" required><br>
+                        <input class="dropbox" type="date" id="birthday" name="birthday" required><br>
                         <p></p>
                         <label for="country">Country</label>
-                        <select id="country" name="country" required>
+                        <select class="dropbox" id="country" name="country" required>
                             <option value="australia">Australia</option>
                             <option value="canada">Canada</option>
                             <option value="usa">USA</option>
@@ -112,13 +127,13 @@
                         <input type="checkbox" id="terms" name="terms" value="yes" required>
                         <label for="terms"> I accept the Terms & Conditions.</label><br>
                         <p></p>
-                        <input type="submit" value="Submit">
+                        <input class="custom_button" type="submit" value="SUBMIT">
                     </form>
 
                     <script src="script.js"></script>
                 </div>
             </div>
-            <div style="background-color:rgb(135, 222, 136);height:650px;width:500px;">
+            <div style="background-color:rgb(135, 222, 136);height:593px;width:500px;">
                 <div class="login-box">
                     <h2>Login</h2>
                     <form onsubmit="return loginValidate()">
@@ -138,60 +153,71 @@
                 </div>
             </div>
         </div>
-        <div style="background-color:blue;height:1300px;width:500px;">
+        <div style="background-color:rgb(216, 253, 187);height:1300px;width:500px;">
+            <h1 style="color: rgb(0, 0, 0); justify-content: center;">Demo View</h1>
             <form>
                 <table>
                     <thead>
                         <tr>
                             <p></p>
                             <th>City</th>
-                            <th>Air Pressure</th>
+                            <th>Country</th>
+                            <th>AQI</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Dhaka</td>
+                            <td>Bangladesh</td>
                             <td>1012</td>
                         </tr>
                         <tr>
                             <td>Chattogram</td>
+                            <td>Bangladesh</td>
                             <td>1010</td>
                         </tr>
                         <tr>
                             <td>Khulna</td>
+                            <td>Bangladesh</td>
                             <td>1008</td>
                         </tr>
                         <tr>
                             <td>Rajshahi</td>
+                            <td>Bangladesh</td>
                             <td>1011</td>
                         </tr>
                         <tr>
                             <td>Barishal</td>
+                            <td>Bangladesh</td>
                             <td>1013</td>
                         </tr>
                         <tr>
                             <td>Sylhet</td>
+                            <td>Bangladesh</td>
                             <td>1009</td>
                         </tr>
                         <tr>
                             <td>Rangpur</td>
+                            <td>Bangladesh</td>
                             <td>1014</td>
                         </tr>
                         <tr>
                             <td>Mymensingh</td>
+                            <td>Bangladesh</td>
                             <td>1010</td>
                         </tr>
                         <tr>
                             <td>Comilla</td>
+                            <td>Bangladesh</td>
                             <td>1012</td>
                         </tr>
                         <tr>
                             <td>Narayanganj</td>
+                            <td>Bangladesh</td>
                             <td>1011</td>
                         </tr>
                     </tbody>
                 </table>
-
             </form>
         </div>
     </div>
